@@ -480,14 +480,17 @@ class _DartCodeViewerPage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (DartCodeViewerTheme.of(context).showCopyButton!)
-          ElevatedButton(
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+          child:ElevatedButton(
+            
             onPressed: () async {
               await Clipboard.setData(ClipboardData(text: _plainTextCode))
                   .then(_showSnackBarOnCopySuccess)
                   .catchError(_showSnackBarOnCopyFailure);
             },
             child: DartCodeViewerTheme.of(context).copyButtonText,
-          ),
+          ),),
         Expanded(
           child: SingleChildScrollView(
             child: RichText(
